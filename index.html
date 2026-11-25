@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>HoloFlux | Sonic Surge</title>
+    <title>CURSED FLUX | Sonic Surge</title>
     
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 128 128'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='%2300ffff'/><stop offset='50%' stop-color='%230088ff'/><stop offset='100%' stop-color='%23ff00cc'/></linearGradient></defs><rect width='128' height='128' rx='32' fill='%23050505'/><rect width='120' height='120' x='4' y='4' rx='28' fill='none' stroke='url(%23g)' stroke-width='4' opacity='0.5'/><text x='64' y='92' font-size='80' font-family='Segoe UI, sans-serif' font-weight='900' text-anchor='middle' fill='url(%23g)'>H</text></svg>">
 
@@ -16,6 +16,7 @@
         }
 
         body { 
+            
             margin: 0; overflow: hidden; background-color: #000; 
             font-family: 'SF Pro Display', 'Segoe UI', -apple-system, sans-serif; 
             user-select: none; -webkit-tap-highlight-color: transparent; 
@@ -190,8 +191,8 @@
 
     <div id="intro-screen">
         <div id="glass-card">
-            <h1 class="flux-text">HOLOFLUX</h1>
-            <p>Interactive Particle Core</p>
+            <h1 class="flux-text">CURSED FLUX</h1>
+            <p>Jujutsu Kaisen Core</p>
             
             <button id="start-btn">Initialize System</button>
             
@@ -211,35 +212,35 @@
             <div class="emoji-orb"><span>🖐️</span></div>
             <div class="text-col">
                 <b class="hud-text hud-gradient">PALM</b>
-                <span class="desc">Shockwave</span>
+                <span class="desc">술식 순전 창(아오)</span>
             </div>
         </div>
         <div class="instruction-row">
             <div class="emoji-orb"><span>✊</span></div>
             <div class="text-col">
                 <b class="hud-text hud-gradient">FIST</b>
-                <span class="desc">Gravity Well</span>
+                <span class="desc">술식 반전 혁(아카)</span>
             </div>
         </div>
         <div class="instruction-row">
             <div class="emoji-orb"><span>👌</span></div>
             <div class="text-col">
                 <b class="hud-text hud-gradient">PINCH</b>
-                <span class="desc">Time Freeze</span>
+                <span class="desc">허식 자(무라사키)</span>
             </div>
         </div>
         <div class="instruction-row">
             <div class="emoji-orb"><span>☝️</span></div>
             <div class="text-col">
                 <b class="hud-text hud-gradient">POINT</b>
-                <span class="desc">Interact</span>
+                <span class="desc">해(解)·팔(八)</span>
             </div>
         </div>
         <div class="instruction-row">
             <div class="emoji-orb"><span>✌️</span></div>
             <div class="text-col">
                 <b class="hud-text hud-gradient">PEACE</b>
-                <span class="desc">Morph Shape</span>
+                <span class="desc">영역 전개 전환</span>
             </div>
         </div>
     </div>
@@ -252,10 +253,10 @@
     <div id="canvas-container"></div>
     
     <div id="ui-layer" class="glass-ui">
-        <button class="nav-btn active" id="btn-sphere" onmouseenter="playSound('hover')">Sphere</button>
-        <button class="nav-btn" id="btn-heart" onmouseenter="playSound('hover')">Heart</button>
-        <button class="nav-btn" id="btn-saturn" onmouseenter="playSound('hover')">Saturn</button>
-        <button class="nav-btn" id="btn-spiral" onmouseenter="playSound('hover')">Galaxy</button>
+        <button class="nav-btn active" id="btn-sphere" onmouseenter="playSound('hover')">복마어주자</button>
+        <button class="nav-btn" id="btn-heart" onmouseenter="playSound('hover')">무량공처</button>
+        <button class="nav-btn" id="btn-saturn" onmouseenter="playSound('hover')">합암예정</button>
+        <button class="nav-btn" id="btn-spiral" onmouseenter="playSound('hover')">자폐원돈과</button>
         <button id="mute-btn" onclick="toggleMute()" onmouseenter="playSound('hover')">🔊</button>
     </div>
 
@@ -431,8 +432,8 @@
                     pos += dir * force + vec3(turbulence); 
                 } else if (uInteractType == 1.0 && dist < 35.0) { // Implode
                      pos -= dir * (dist * 0.9); 
-                } else if (uInteractType == 3.0 && dist < 6.0) { // Point
-                    pos += dir * (6.0 - dist) * 1.5;
+                } else if (uInteractType == 3.0 && dist < 18.0) { // Point
+                    pos += dir * (18.0 - dist) * 1.5;
                 }
 
                 vec4 mvPosition = modelViewMatrix * vec4(pos, 1.0);
@@ -440,11 +441,13 @@
                 gl_PointSize = (160.0 * sizeRandom) / -mvPosition.z;
                 
                 float cNoise = snoise(pos * 0.05 + uTime * 0.5 * uSpeed);
-                vec3 colorA = vec3(0.0, 1.0, 1.0); vec3 colorB = vec3(1.0, 0.0, 0.8);
+                vec3 colorA = vec3(0.85, 0.88, 1.0); vec3 colorB = vec3(1.0, 1.0, 1.0);
                 vColor = mix(colorA, colorB, cNoise + 0.5);
                 
-                if(uInteractType == 2.0 && dist < 15.0) vColor = vec3(1.0, 1.0, 0.5);
-                if(uInteractType == 4.0) vColor = mix(vColor, vec3(0.5, 0.8, 1.0), 0.7);
+                if(uInteractType == 1.0 && dist < 25.0) vColor = vec3(1.0, 0.05, 0.12);
+                if(uInteractType == 2.0 && dist < 25.0) vColor = vec3(0.0, 0.65, 1.0);
+                if(uInteractType == 3.0 && dist < 18.0) vColor = vec3(0.9, 0.0, 0.15);
+                if(uInteractType == 4.0) vColor = vec3(0.65, 0.0, 1.0);
             }
         `;
         const fragmentShader = `varying vec3 vColor; void main() { float r = distance(gl_PointCoord, vec2(0.5)); if (r > 0.5) discard; float glow = 1.0 - (r * 2.0); glow = pow(glow, 2.0); gl_FragColor = vec4(vColor, glow); }`;
@@ -581,20 +584,20 @@
                 lastGesture = gesture;
             }
 
-            if (gesture === "FIST") { interactType = 1.0; cursorColor = 0xff0055; label = "IMPLODE"; } 
-            else if (gesture === "PALM") { interactType = 2.0; cursorColor = 0xffaa00; label = "EXPLODE"; } 
-            else if (gesture === "PINCH") { interactType = 4.0; targetSpeed = 0.05; cursorColor = 0xffffff; label = "FREEZE"; } 
+           if (gesture === "FIST") { interactType = 1.0; cursorColor = 0xff1133; label = "혁 (아카)"; } 
+            else if (gesture === "PALM") { interactType = 2.0; cursorColor = 0x0088ff; label = "창 (아오)"; } 
+            else if (gesture === "PINCH") { interactType = 4.0; targetSpeed = 0.05; cursorColor = 0x9900ff; label = "자 (무라사키)"; } 
             else if (gesture === "PEACE") {
                 interactType = 0.0; const now = Date.now();
                 if (now - lastGestureTime > 2000) {
                     currentShapeIndex = (currentShapeIndex + 1) % shapeKeys.length; switchShape(shapeKeys[currentShapeIndex]); lastGestureTime = now;
-                } label = "MORPHING";
-            } else interactType = 3.0;
+                } label = "영역 전개 전환";
+            } else { interactType = 3.0; cursorColor = 0xff0022; label = "해(解)·팔(八)"; }
 
             material.uniforms.uInteractType.value = interactType;
             cursorMesh.material.color.setHex(cursorColor);
             gestureLabel.innerText = label;
-            gestureLabel.style.color = (gesture === "PINCH" ? "white" : (gesture === "FIST" ? "#ff0055" : (gesture === "PALM" ? "#ffaa00" : "cyan")));
+            gestureLabel.style.color = (gesture === "PINCH" ? "#cc66ff" : (gesture === "FIST" ? "#ff1133" : (gesture === "PALM" ? "#0088ff" : "#ff0022")));
             
             timeSpeed += (targetSpeed - timeSpeed) * 0.1;
             material.uniforms.uSpeed.value = timeSpeed;
